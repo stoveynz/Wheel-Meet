@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600|Open+Sans&display=swap');
+
+    {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+	padding:0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    background-color: #f1f1f1;
+}
+.main-container {
+    position: relative;
+    max-width: 1600px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 25px;
+    padding-top: 1px;
+    padding-right: 25px;
+    padding-bottom: 1px;
+    padding-left: 25px;
+    background-color: white;
+    background-clip: padding-box;
+    -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    clear:both;
+}
+.map-container {
+    position: relative;
+    max-width: 1600px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 25px;
+    background-color: white;
+    background-clip: padding-box;
+    -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+}
+
+/* move this shit to a card CSS file. */
+
+    .card-column {
+      float: left;
+      width: 32%;
+      padding-right:0.665%;
+      padding-left:0.665%;
+    }
+
+    /* Remove extra left and right margins, due to padding in columns */
+    .card-row {
+        margin: 0 -5px;
+        padding-bottom: 15px; 
+    }
+    a{
+        text-decoration: none;
+    }
+
+    /* Clear floats after the columns */
+    .card-row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Style the counter cards */
+    .card {
+      /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+      padding: 16px;
+      text-align: center;
+      background-color: #f1f1f1;
+      max-width:525px;
+      background-color: white;
+      background-clip: padding-box;
+      -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+      -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+      box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    /*image style on card*/
+    .card img{
+        max-width: 400px;
+    }
+    
+    /*container to display card*/
+    .test-container{
+        width: 80%;
+        clear: both;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+.centre {
+    text-align: center;
+}
+button.link { 
+    width: 100%;
+    background:none;
+    border:none;
+    text-align: center;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    background-clip: padding-box;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.15);
+    box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.15);
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text],
+.form-container input[type=password] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+    border: none;
+    border-bottom: 3px solid #555;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: black;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    opacity: 0.8;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;    
+}
+
+.form-container .small-btn {
+    background-color: black;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    opacity: 0.8;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;    
+}
+
+#page-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+    transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+    opacity: 1;
+}
+
+#map{
+    height: 100%;
+}
+
+@media all and (max-width: 900px) {
+
+.main-container {
+    width:100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0%;
+    margin-right: 0%;
+    text-align: center;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.map-container {
+    width:100%;
+    margin-top: 5px;
+    margin-left: 0%;
+    margin-right: 0%;
+    	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+}
+

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600|Open+Sans&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+    {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+	padding:0;
+}
+
+.header-main{
+	background-color:#ffffff;
+    background-clip: border-box;
+	box-shadow:0 1px 1px #ccc;
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+	box-sizing: border-box;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+}
+
+/* The logo */
+.header-main nav {
+	line-height: 40px;
+	float: left;
+}
+
+.header-main .icon {
+  display: none;
+}
+
+/* The navigation links */
+
+.header-main a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+	color: #000000;
+	text-decoration: none;
+}
+
+/* RHS buttons */
+
+.header-main ul {
+	font: 14px Arial, Helvetica, sans-serif;
+	list-style: none;
+	line-height: 1;
+	float: right;
+}
+
+.header-main ul li {
+	display: inline-block;
+	margin-left: 15px;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+	opacity:0.9;
+}
+
+.header-main ul li:hover{
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+	opacity: 1;
+}
+
+/* The sign up button */
+
+.header-main .header-noauth ul li:last-child a {
+	font-weight: bold;
+	background-color: #000000;
+	padding: 10px 15px;
+	border-radius: 3px;
+    color: white
+}
+
+/* Making the header responsive */
+
+/*
+@media all and (max-width: 900px) {
+
+	.header-main {
+		padding: 20px;
+		height: 80px;
+	}
+    
+	.header-main h1 {
+		float: none;
+		margin: -8px 0 2px;
+		text-align: center;
+		font-size: 24px;
+		line-height: 1;
+	}
+
+	.header-main nav {
+		margin: 0;
+		float: none;
+	}
+
+	.header-main nav li a {
+		font-size: 13px;
+	}
+
+	.header-main ul {
+		display: none;
+	}
+    
+    .header-main a.icon{
+        float: right;
+        display: block;
+    }
+    
+    .header-main.responsive {position: relative;}
+    .header-main.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .header-main.responsive li a {
+        float:none;
+        display: block;
+        text-align: center
+    }
+}
+*/
