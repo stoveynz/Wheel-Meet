@@ -11,12 +11,22 @@
     }
     /*gets all the cars for all cars except for the user cars*/
     function get_all_cars($db, $user){
-        $sql = "SELECT * FROM cars WHERE user_id != '$user';";
+        $sql = "SELECT * FROM cars WHERE userid != '$user';";
         return mysqli_query($db, $sql);
     }
     /*displays all of the cars that aren't the users*/
     function display_all_cars($db, $user){
         $result = get_all_cars($db, $user);
+        print_cars($db, $result);
+    }
+    /*gets latest cars*/
+    function get_recent_cars($db){
+        $sql = "SELECT * FROM cars ORDER BY carid DESC LIMIT 3;";
+        return mysqli_query($db, $sql);
+    }
+    /*displays most recent cars*/
+    function display_recent_cars($db){
+        $result = get_recent_cars($db);
         print_cars($db, $result);
     }
     /*gets the image path related to the current car*/
@@ -36,7 +46,9 @@
                 }
                         echo '<div class = "card-column">';
                             echo'<div class="card" name="'.$row['carid'].'">';
+                                echo '<div class="img-container">';
                                 echo '<img src="'.get_car_image($db, $row['carid']).'">';
+                                echo '</div>';
                                 echo '<h3>'.$row["make"]. " " .$row["model"].'</h3>';
                                 echo '<p>Year: '.$row['year'].'</p>';
                                 echo '<p>Horsepower: '.$row['horsepower'].'</p>';

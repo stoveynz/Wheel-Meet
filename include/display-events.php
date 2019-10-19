@@ -19,6 +19,16 @@
         $result = get_all_events($db, $user);
         print_events($db, $result, $user);
     }
+    /*gets the last 3 events that were created*/
+    function get_latest_events($db){
+        $sql = "SELECT * FROM events ORDER BY event_id DESC LIMIT 3;";
+        return mysqli_query($db, $sql);
+    }
+    /*process latest events*/
+    function display_latest_events($db, $user){
+        $result = get_latest_events($db);
+        print_events($db, $result, $user);
+    }
     /*uses the functions for getting the events and prints them to the screen*/
     function print_events($db, $result, $user){
         if($result->num_rows > 0){
@@ -33,21 +43,31 @@
                             echo '<h3>'.$row["name"].'</h3>';
                             echo '<p>Time: '.$row['time'].'</p>';
                             echo '<p>Date: '.$row['date'].'</p>';
-                            echo '<p>Address: '.$row['address'].'</p>';
+                            echo '<p>Location: '.$row['event_address'].'</p>';
                             echo '<p>About: '.$row['description'].'</p>';
+                            //if it is not the users own event display button so they can rsvp
                             if($user != $row["user_id"]){
+                                //if they user is not RSVP'd show RSVP button
                                 if(!check_rsvp($db, $user, $row["event_id"])){
                                     echo '<form action="events.php" method = "post">';
-                                        echo '<input type="submit" class="small-btn" name = "event_rsvp" value = "RSVP">';
-                                        echo '<input type="hidden" class="small-btn"name = "event" value="'.$row['event_id'].'">';
+                                        echo '<input type="submit" class="pagebtn" name = "event_rsvp" value = "RSVP">';
+                                        echo '<input type="hidden" class="pagebtn"name = "event" value="'.$row['event_id'].'">';
                                     echo '</form>';
                                 }
+                                //if the user is RSVP'd show the UN RSVP button
                                 else{
                                     echo '<form action="events.php" method = "post">';
-                                        echo '<input type="submit" name = "event_un_rsvp" value = "REMOVE RSVP">';
+                                        echo '<input type="submit" class="pagebtn" name = "event_un_rsvp" value = "REMOVE RSVP">';
                                         echo '<input type="hidden" name = "event" value="'.$row['event_id'].'">';
                                     echo '</form>';
                                 }
+                            }
+                            else{
+                                echo '<form action="events.php" method ="post">';
+                                    echo '<input type = "submit" class="pagebtn" onclick="openRsvpPopup()" name = "event_view_rsvp" value = "VIEW RSVPs">';
+                                    echo '<input type = "submit" class="pagebtn" name="delete_event" value="Delete Event">';
+                                    echo '<input type = "hidden" name = "event" value = "'.$row['event_id'].'">';
+                                echo '</form>';
                             }
                         echo '</div>';
                     echo '</div>';

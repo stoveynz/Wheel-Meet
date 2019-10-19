@@ -19,10 +19,10 @@
 <body>
     <div class="main-container">
         
-         <h1> My Garage</h1>
+         <h1 class="hero-text"> My Garage</h1>
        
             <form method="post" action="garage-create.php" class="form-container">
-            <button onclick="window.location.href='garage-create.php';" name="create" style="margin-right: 14px;" class="btn"><h2>Add Car</h2></button>
+            <button onclick="window.location.href='garage-create.php';" name="create" class="pagebtn"><h2>Add Car</h2></button>
             </form>
     </div>
     <div class = "test-container">

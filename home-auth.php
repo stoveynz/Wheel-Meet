@@ -20,9 +20,28 @@
     
     <div class="main-container">
         <?php if(isset($_SESSION['username'])): ?>
-            <h1>Welcome, <strong><?php echo $_SESSION['username']; ?></strong>.</h1>
+            <h1>Welcome,  <strong>&nbsp<?php echo $_SESSION['username']; ?></strong>!</h1>
         <?php endif ?>
     </div>
-
+    
+    
+    <div class="test-container">
+        <h2>Most Recent Cars</h2>
+        <?php
+            display_recent_cars($db);
+        ?>
+    </div>
+    <div class="test-container">
+        <h2>Latest Events</h2>
+        <?php
+            display_latest_events($db, return_user());
+        ?>
+    </div>
+    <div class="test-container">
+        <h2>Newest Clubs</h2>
+        <?php
+            display_newest_clubs($db, return_user());
+        ?>
+    </div>
 </body>
 </html>

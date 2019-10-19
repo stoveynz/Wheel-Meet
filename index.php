@@ -21,8 +21,8 @@
         <h1>Please log in.</h1>
     </div>
 <!-- login -->
-    <div class="form-popup" id="loginForm">
-        <form method="post" action="index.php" class="form-container">
+    <div class="popup-form" id="loginForm">
+        <form method="post" action="index.php" class="popup-container popup-container-auth">
             <h1>Login</h1>
 
             <input type="text" placeholder="Username" name="username" required>
@@ -33,8 +33,8 @@
         </form>
     </div>
 <!-- register -->
-    <div class="form-popup" id="regoForm">
-        <form method="post" action="index.php" class="form-container">
+    <div class="popup-form" id="regoForm">
+        <form method="post" action="index.php" class="popup-container popup-container-auth">
             <h1>Register</h1>
 
             <input type="text" placeholder="Username" name="username" value="<?php echo $username ?>" required>

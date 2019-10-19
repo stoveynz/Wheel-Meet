@@ -23,4 +23,21 @@ function remove_rsvp($db, $user, $event){
     header("Location: events.php");
 }
 
+function view_rsvp($db, $event){
+    $sql = "SELECT u.username FROM users u, rsvp r WHERE r.userid = u.id AND r.eventid = .'$event'.";
+    $result = mysqli_query($db,$sql);
+    if($result->num_rows > 0){
+        $count = 0;
+        while($row = $result->fetch_assoc()){
+            $count++;
+            echo '<p>'.$row['username'].'</p>';
+        }
+    }
+}
+
+function delete_event($db, $user, $event){
+    $sql = "DELETE FROM events WHERE user_id = '$user' AND event_id = '$event';";
+    mysqli_query($db, $sql);
+    header("Location: events.php");
+}
 ?>

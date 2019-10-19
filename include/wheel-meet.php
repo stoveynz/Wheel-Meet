@@ -5,6 +5,10 @@ include('add-car.php');
 include('display-events.php');
 include('display-cars.php');
 include('rsvp-event.php');
+include('clubs-handling.php');
+include('display-clubs.php');
+include('rsvp-club.php');
+
 
 //functions
     //checks that the user is logged in and the session exists, if not start the session
@@ -68,5 +72,39 @@ include('rsvp-event.php');
         $user = $_SESSION['userId'];
         $event = $_POST['event'];
         remove_rsvp($db, $user, $event);
+    }
+    
+    // Delete event
+    if(isset($_POST['delete_event'])){
+        $user = $_SESSION['userId'];
+        $event = $_POST['event'];
+        delete_event($db, $user, $event);
+    }
+    
+    // create club
+    if(isset($_POST['create_club'])){
+        $user = return_user();
+        create_club($user, $db);
+    }
+    
+    // Join club
+    if(isset($_POST['join_club'])){
+        $user = $_SESSION['userId'];
+        $club = $_POST['club'];
+        add_club_rsvp($db, $user, $club);
+    }
+    
+    // Leave club
+    if(isset($_POST['leave_club'])){
+        $user = $_SESSION['userId'];
+        $club = $_POST['club'];
+        remove_club_rsvp($db, $user, $club);
+    }
+    
+    // Delete club
+    if(isset($_POST['delete_club'])){
+        $user = $_SESSION['userId'];
+        $club = $_POST['club'];
+        delete_club($db, $user, $club);
     }
 ?>

@@ -14,11 +14,11 @@ body {
 .main-container {
     position: relative;
     max-width: 1600px;
+    min-height:80px;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 25px;
     padding-top: 1px;
-    padding-right: 25px;
     padding-bottom: 1px;
     padding-left: 25px;
     background-color: white;
@@ -28,6 +28,27 @@ body {
     box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
     clear:both;
 }
+
+h1.hero-text {
+    display:table;
+    float:left;
+}
+
+.main-container .form-container .pagebtn{
+    display:table;
+    margin-left:auto;
+    margin-right:0;
+    height:80px;
+    opacity:0.8;
+}
+.main-container .pagebtn{
+    display:table;
+    margin-left:auto;
+    margin-right:0;
+    height:80px;
+    opacity:0.8;
+}
+
 .map-container {
     position: relative;
     max-width: 1600px;
@@ -42,6 +63,15 @@ body {
 }
 
 /* move this shit to a card CSS file. */
+
+    .car-card{
+        width: 100%;
+    }
+    .car-card-img{
+        float:right;
+        clear: both;
+        max-width:500px;
+    }
 
     .card-column {
       float: left;
@@ -81,8 +111,19 @@ body {
     }
 
     /*image style on card*/
-    .card img{
-        max-width: 400px;
+    .card .img-container img {
+        width:100%;
+        height:100%;
+        display:block; /*remove inline-block spaces*/
+        object-fit: cover;
+        position:absolute;
+    }
+    .card .img-container{
+        width:100%; /*container-width*/
+        overflow:hidden; /*hide bounds of image */
+        margin:0;   /*reset margin of figure tag*/
+        position:relative;
+        padding-bottom: 56.2%;
     }
     
     /*container to display card*/
@@ -91,6 +132,8 @@ body {
         clear: both;
         position: relative;
         margin: 0 auto;
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
     
 h1,
@@ -128,7 +171,7 @@ button.link {
 }
 
 /* The popup form - hidden by default */
-.form-popup {
+.popup-form {
     display: none;
     position: fixed;
     padding-left: 25px;
@@ -136,25 +179,31 @@ button.link {
     padding-bottom: 10px;
     background-clip: padding-box;
     background-color: white;
+    backface-visibility: hidden;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px));
     -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.15);
     box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.15);
+    
     z-index: 9;
 }
 
 /* Add styles to the form container */
-.form-container {
+.popup-container {
+    padding: 10px;
+    background-color: white;
+}
+.popup-container-auth{
     max-width: 300px;
     padding: 10px;
     background-color: white;
 }
 
 /* Full-width input fields */
-.form-container input[type=text],
-.form-container input[type=password] {
+.popup-container input[type=text],
+.popup-container input[type=password] {
     width: 100%;
     padding: 6px 10px;
     margin: 4px 0;
@@ -167,14 +216,14 @@ button.link {
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus,
-.form-container input[type=password]:focus {
+.popup-container input[type=text]:focus,
+.popup-container input[type=password]:focus {
     border: none;
     border-bottom: 3px solid #555;
 }
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+.popup-container .btn {
     background-color: black;
     padding: 16px 20px;
     border: none;
@@ -191,7 +240,7 @@ button.link {
     color: white;    
 }
 
-.form-container .small-btn {
+.popup-container .small-btn {
     background-color: black;
     padding: 16px 20px;
     border: none;
@@ -217,9 +266,24 @@ button.link {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+.pagebtn {
+    background-color: black;
+    padding-left:15px;
+    padding-right:15px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;  
+}
+
 /* Add some hover effects to buttons */
-.form-container .btn:hover,
-.open-button:hover {
+.popup-container .btn:hover,
+.open-button:hover,
+.main-container .form-container .pagebtn:hover,
+.main-container .pagebtn {
     transition: opacity .25s ease-in-out;
    -moz-transition: opacity .25s ease-in-out;
    -webkit-transition: opacity .25s ease-in-out;
