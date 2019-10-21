@@ -17,7 +17,7 @@
         <ul>
             <li><a href="home-auth.php">Home</a></li>
             <li><a href="events.php">Events</a></li>
-            <!--<li><a href="map.php">Map</a></li>-->
+            <li><a href="map.php">Map</a></li>
             <li><a href="clubs.php">Clubs</a></li>
             <!--<li><a href="community.php">Community</a></li>-->
             <li><a href="garage.php">Garage</a></li>

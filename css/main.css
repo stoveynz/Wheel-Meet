@@ -5,16 +5,17 @@
 }
 
 body {
-    margin:0;
-	padding:0;
+    margin: 0;
+    padding: 0;
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
     background-color: #f1f1f1;
 }
+
 .main-container {
     position: relative;
     max-width: 1600px;
-    min-height:80px;
+    min-height: 80px;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 25px;
@@ -23,30 +24,31 @@ body {
     padding-left: 25px;
     background-color: white;
     background-clip: padding-box;
-    -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
-    box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
-    clear:both;
+    box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    clear: both;
 }
 
 h1.hero-text {
-    display:table;
-    float:left;
+    display: table;
+    float: left;
 }
 
-.main-container .form-container .pagebtn{
-    display:table;
-    margin-left:auto;
-    margin-right:0;
-    height:80px;
-    opacity:0.8;
+.main-container .form-container .pagebtn {
+    display: table;
+    margin-left: auto;
+    margin-right: 0;
+    height: 80px;
+    opacity: 0.8;
 }
-.main-container .pagebtn{
-    display:table;
-    margin-left:auto;
-    margin-right:0;
-    height:80px;
-    opacity:0.8;
+
+.main-container .pagebtn {
+    display: table;
+    margin-left: auto;
+    margin-right: 0;
+    height: 80px;
+    opacity: 0.8;
 }
 
 .map-container {
@@ -57,85 +59,97 @@ h1.hero-text {
     margin-top: 25px;
     background-color: white;
     background-clip: padding-box;
-    -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
-    box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
 }
 
 /* move this shit to a card CSS file. */
 
-    .car-card{
-        width: 100%;
-    }
-    .car-card-img{
-        float:right;
-        clear: both;
-        max-width:500px;
-    }
+.car-card {
+    width: 100%;
+}
 
-    .card-column {
-      float: left;
-      width: 32%;
-      padding-right:0.665%;
-      padding-left:0.665%;
-    }
+.car-card-img {
+    float: right;
+    clear: both;
+    max-width: 500px;
+}
 
-    /* Remove extra left and right margins, due to padding in columns */
-    .card-row {
-        margin: 0 -5px;
-        padding-bottom: 15px; 
-    }
-    a{
-        text-decoration: none;
-    }
+.card-column {
+    float: left;
+    width: 32%;
+    padding-right: 0.665%;
+    padding-left: 0.665%;
+}
 
-    /* Clear floats after the columns */
-    .card-row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+/* Remove extra left and right margins, due to padding in columns */
+.card-row {
+    margin: 0 -5px;
+    padding-bottom: 15px;
+}
 
-    /* Style the counter cards */
-    .card {
-      /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-      padding: 16px;
-      text-align: center;
-      background-color: #f1f1f1;
-      max-width:525px;
-      background-color: white;
-      background-clip: padding-box;
-      -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.05);
-      -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
-      box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.05);
-    }
+a {
+    text-decoration: none;
+    color:black;
+}
 
-    /*image style on card*/
-    .card .img-container img {
-        width:100%;
-        height:100%;
-        display:block; /*remove inline-block spaces*/
-        object-fit: cover;
-        position:absolute;
-    }
-    .card .img-container{
-        width:100%; /*container-width*/
-        overflow:hidden; /*hide bounds of image */
-        margin:0;   /*reset margin of figure tag*/
-        position:relative;
-        padding-bottom: 56.2%;
-    }
-    
-    /*container to display card*/
-    .test-container{
-        width: 80%;
-        clear: both;
-        position: relative;
-        margin: 0 auto;
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-    
+/* Clear floats after the columns */
+.card-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the counter cards */
+.card {
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    max-width: 525px;
+    background-color: white;
+    background-clip: padding-box;
+    -moz-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.05);
+}
+
+a {
+    color:black;
+}
+
+/*image style on card*/
+.card .img-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /*remove inline-block spaces*/
+    object-fit: cover;
+    position: absolute;
+}
+
+.card .img-container {
+    width: 100%;
+    /*container-width*/
+    overflow: hidden;
+    /*hide bounds of image */
+    margin: 0;
+    /*reset margin of figure tag*/
+    position: relative;
+    padding-bottom: 56.2%;
+}
+
+/*container to display card*/
+.test-container {
+    width: 80%;
+    clear: both;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
 h1,
 h2,
 h3,
@@ -149,10 +163,11 @@ h6 {
 .centre {
     text-align: center;
 }
-button.link { 
+
+button.link {
     width: 100%;
-    background:none;
-    border:none;
+    background: none;
+    border: none;
     text-align: center;
 }
 
@@ -183,10 +198,10 @@ button.link {
     top: 50%;
     left: 50%;
     transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px));
-    -moz-box-shadow:    0px 0px 7px 7px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.15);
-    box-shadow:         0px 0px 7px 7px rgba(0, 0, 0, 0.15);
-    
+    box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.15);
+
     z-index: 9;
 }
 
@@ -195,7 +210,8 @@ button.link {
     padding: 10px;
     background-color: white;
 }
-.popup-container-auth{
+
+.popup-container-auth {
     max-width: 300px;
     padding: 10px;
     background-color: white;
@@ -237,7 +253,7 @@ button.link {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    color: white;    
+    color: white;
 }
 
 .popup-container .small-btn {
@@ -254,7 +270,7 @@ button.link {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    color: white;    
+    color: white;
 }
 
 #page-mask {
@@ -268,15 +284,15 @@ button.link {
 
 .pagebtn {
     background-color: black;
-    padding-left:15px;
-    padding-right:15px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: none;
     cursor: pointer;
     width: 200px;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    color: white;  
+    color: white;
 }
 
 /* Add some hover effects to buttons */
@@ -285,37 +301,36 @@ button.link {
 .main-container .form-container .pagebtn:hover,
 .main-container .pagebtn {
     transition: opacity .25s ease-in-out;
-   -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
     opacity: 1;
 }
 
-#map{
+#map {
     height: 100%;
 }
 
 @media all and (max-width: 900px) {
 
-.main-container {
-    width:100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0%;
-    margin-right: 0%;
-    text-align: center;
-    -webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
+    .main-container {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 0%;
+        margin-right: 0%;
+        text-align: center;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
 
-.map-container {
-    width:100%;
-    margin-top: 5px;
-    margin-left: 0%;
-    margin-right: 0%;
-    	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+    .map-container {
+        width: 100%;
+        margin-top: 5px;
+        margin-left: 0%;
+        margin-right: 0%;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
 }
-}
-

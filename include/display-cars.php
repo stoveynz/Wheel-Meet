@@ -7,7 +7,7 @@
     /*displays all of the user cars*/
     function display_user_cars($db, $user){
         $result = get_user_cars($db, $user);
-        print_cars($db, $result);
+        print_cars($db, $result, $user);
     }
     /*gets all the cars for all cars except for the user cars*/
     function get_all_cars($db, $user){
@@ -17,7 +17,7 @@
     /*displays all of the cars that aren't the users*/
     function display_all_cars($db, $user){
         $result = get_all_cars($db, $user);
-        print_cars($db, $result);
+        print_cars($db, $result, $user);
     }
     /*gets latest cars*/
     function get_recent_cars($db){
@@ -25,9 +25,9 @@
         return mysqli_query($db, $sql);
     }
     /*displays most recent cars*/
-    function display_recent_cars($db){
+    function display_recent_cars($db, $user){
         $result = get_recent_cars($db);
-        print_cars($db, $result);
+        print_cars($db, $result, $user);
     }
     /*gets the image path related to the current car*/
     function get_car_image($db, $car){
@@ -36,7 +36,7 @@
         return $result->fetch_assoc()['image_path'];
     }
     /*processes the cars and displays them to the screen*/
-    function print_cars($db, $result){
+    function print_cars($db, $result, $user){
         if($result->num_rows > 0){
             $count = 0;
             while($row = $result->fetch_assoc()){
@@ -49,11 +49,17 @@
                                 echo '<div class="img-container">';
                                 echo '<img src="'.get_car_image($db, $row['carid']).'">';
                                 echo '</div>';
-                                echo '<h3>'.$row["make"]. " " .$row["model"].'</h3>';
+                                echo '<h3><a href="car.php?car='.$row['carid'].'">'.$row["make"]. " " .$row["model"].'</a></h3>';
                                 echo '<p>Year: '.$row['year'].'</p>';
                                 echo '<p>Horsepower: '.$row['horsepower'].'</p>';
                                 echo '<p>Colour: '.$row['colour'].'</p>';
                                 echo '<p>About: '.$row['description'].'</p>';
+                                
+                                if($user == $row['userid']){
+                                    echo '<form action="clubs.php" method="get">';
+                                        echo '<input type="button" class="pagebtn" onclick="location.href=\'post_create.php?car='.$row['carid'].'\';" name="build_log" value="Add Build Log">';
+                                    echo '</form>';
+                                }
                             echo'</div>';
                         echo '</div>';
                 if($count % 3 == 0){

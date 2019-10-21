@@ -8,6 +8,7 @@ include('rsvp-event.php');
 include('clubs-handling.php');
 include('display-clubs.php');
 include('rsvp-club.php');
+include('add-post.php');
 
 
 //functions
@@ -60,6 +61,12 @@ include('rsvp-club.php');
         add_car($db, $user);
     }
     
+    //add post 
+    if(isset($_POST['create_post'])){
+        $user = $_SESSION['userId'];
+        create_post($db, $user);
+    }
+    
     //rsvp to event
     if(isset($_POST['event_rsvp'])){
         $user = $_SESSION['userId'];
@@ -83,28 +90,57 @@ include('rsvp-club.php');
     
     // create club
     if(isset($_POST['create_club'])){
-        $user = return_user();
-        create_club($user, $db);
+        create_club(return_user(), $db);
     }
     
     // Join club
     if(isset($_POST['join_club'])){
-        $user = $_SESSION['userId'];
         $club = $_POST['club'];
-        add_club_rsvp($db, $user, $club);
+        add_club_rsvp($db, return_user(), $club);
+    }
+    
+    // Request Club
+    if(isset($_POST['request_club'])){
+        $club = $_POST['club'];
+        add_club_request($db, return_user(), $club);
+    }
+    
+    // Cancel Request Club
+    if(isset($_POST['cancel_request'])){
+        $club = $_POST['club'];
+        cancel_club_request($db, return_user(), $club);
+    }
+    
+    // Approve Club Request
+    if(isset($_POST['approve_member'])){
+        $club = $_POST['club'];
+        $user = $_POST['user_request'];
+        approve_club_request($db, $user, $club);
+    }
+    
+    // Decline Club Request
+    if(isset($_POST['decline_member'])){
+        $club = $_POST['club'];
+        $user = $_POST['user_request'];
+        decline_club_request($db, $user, $club);
+    }
+    
+    // Kick user from club
+    if(isset($_POST['kick_member'])){
+        $club = $_POST['club'];
+        $user = $_POST['user_request'];
+        kick_from_club($db, $user, $club);
     }
     
     // Leave club
     if(isset($_POST['leave_club'])){
-        $user = $_SESSION['userId'];
         $club = $_POST['club'];
-        remove_club_rsvp($db, $user, $club);
+        remove_club_rsvp($db, return_user(), $club);
     }
     
     // Delete club
     if(isset($_POST['delete_club'])){
-        $user = $_SESSION['userId'];
         $club = $_POST['club'];
-        delete_club($db, $user, $club);
+        delete_club($db, return_user(), $club);
     }
 ?>

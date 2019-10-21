@@ -29,6 +29,15 @@
         $result = get_latest_events($db);
         print_events($db, $result, $user);
     }
+    
+    /*get rsvp list*/
+    function get_rsvp($db, $user){
+        $result = get_user_events($db, $user);
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+        }
+        view_rsvp($db, $row['event_id']);
+    }
     /*uses the functions for getting the events and prints them to the screen*/
     function print_events($db, $result, $user){
         if($result->num_rows > 0){
@@ -64,7 +73,7 @@
                             }
                             else{
                                 echo '<form action="events.php" method ="post">';
-                                    echo '<input type = "submit" class="pagebtn" onclick="openRsvpPopup()" name = "event_view_rsvp" value = "VIEW RSVPs">';
+                                    echo '<input type = "button" class="pagebtn" onclick="openRsvpPopup()" name = "event_view_rsvp" value = "View RSVPs">';
                                     echo '<input type = "submit" class="pagebtn" name="delete_event" value="Delete Event">';
                                     echo '<input type = "hidden" name = "event" value = "'.$row['event_id'].'">';
                                 echo '</form>';

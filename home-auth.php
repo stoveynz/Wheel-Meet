@@ -28,7 +28,7 @@
     <div class="test-container">
         <h2>Most Recent Cars</h2>
         <?php
-            display_recent_cars($db);
+            display_recent_cars($db, return_user());
         ?>
     </div>
     <div class="test-container">

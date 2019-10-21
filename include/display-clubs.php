@@ -46,6 +46,50 @@
         print_clubs($db, $result, $user);
     }
     
+    // View members
+    function view_club_members($db, $club){
+        $sql = "SELECT u.username, u.id FROM users u, club_user cu WHERE cu.userid = u.id AND cu.clubid = '$club';";
+        $result = mysqli_query($db,$sql);
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                echo '<p>'.$row['username'].' </p>';
+                echo '<input type="submit" class="btn" name="kick_member" value="Kick">';
+                echo '<input type="submit" class="btn" name="admin_member" value="Make Admin">';
+                echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                echo '<input type="hidden" name="club" value="'.$club.'">';
+            }
+        }
+        else
+        {
+            echo '<p>No Members!</p>';
+        }
+    }
+    
+    function view_request_list($db, $club){
+        $sql = "SELECT private FROM clubs WHERE clubid = '$club';";
+        $result = mysqli_query($db, $sql);
+        $row = $result->fetch_assoc();
+        if($row['private'] != 0)
+        {
+            $sql = "SELECT u.username, u.id FROM users u, club_requests cr WHERE cr.userid = u.id AND cr.clubid ='$club';";
+            $result = mysqli_query($db, $sql);
+            echo '<h1>Request List</h1>';
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    echo '<p>'.$row['username'].' </p>';
+                    echo '<input type="submit" class="btn" name="approve_member" value="Approve">';
+                    echo '<input type="submit" class="btn" name="decline_member" value="Decline">';
+                    echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                    echo '<input type="hidden" name="club" value="'.$club.'">';
+                }
+            }
+            else
+            {
+                echo '<p>No Requests!</p>';
+            }
+        }
+    }
+ 
     function print_clubs($db, $result, $user){
         if($result->num_rows > 0){
             $count = 0;
@@ -69,15 +113,21 @@
                             //IF user hasn't joined club yet
                             if(!check_club_rsvp($db, $user, $row["clubid"])){
                                 //IF club is not private
-                                if(!check_privacy($row["private"])){
+                                if(!check_privacy($row['private'])){
                                     echo '<form action="clubs.php" method="post">';
                                         echo '<input type ="submit" class="pagebtn" name="join_club" value = "Join Club">';
                                         echo '<input type="hidden" class="pagebtn"name = "club" value="'.$row['clubid'].'">';
                                     echo '</form>';
                                 }
+                                // Club is private
                                 else{
                                     echo '<form action="clubs.php" method="post">';
-                                        echo '<input type ="submit" class="pagebtn" name="request_club" value = "Request Club">';
+                                        if(!check_club_request($db, $user, $row['clubid'])){
+                                            echo '<input type ="submit" class="pagebtn" name="request_club" value = "Request Club">';
+                                        }
+                                        else{
+                                            echo '<input type ="submit" class="pagebtn" name="cancel_request" value = "Cancel Request">';
+                                        }
                                         echo '<input type="hidden" class="pagebtn"name = "club" value="'.$row['clubid'].'">';
                                     echo '</form>';
                                 }
@@ -92,8 +142,11 @@
                         }
                         else {
                            //User is owner of club
+                            echo '<form action="clubs.php" method="get">';
+                                echo '<input type="button" class="pagebtn" onclick="location.href=\'manage-club.php?club='.$row['clubid'].'\';" name="club_members" value="View Members">';
+                                
+                            echo '</form>';
                             echo '<form action="clubs.php" method="post">';
-                                echo '<input type="button" class="pagebtn" onclick="openClubMemberPopup()" name="club_members" value="View Members">';
                                 echo '<input type="submit" class="pagebtn" name="delete_club" value="Delete Club">';
                                 echo '<input type="hidden" name="club" value="'.$row['clubid'].'">';
                             echo '</form>';

@@ -40,29 +40,31 @@
         <br>
     </div>
         
-    <div class="popup-form" id="RSVP">
-        <div class="popup-container">
-            <h1>Going</h1>
-
-            <button type="button" class="btn cancel" onclick="closePopup()">Close</button>
-        </div>
+    <div class="popup-form" style="width:20%" id="RSVP">
+        <form method="post" style="width:auto" action="events.php" class="popup-container">
+            <h2>People Attending</h2>
+            <?php
+                get_rsvp($db, return_user());
+            ?>
+            <button type="cancel" onclick="closeRsvpPopup()" name="close" class="btn">Close</button>
+        </form>
     </div>
     
-        <div class="popup-form"  style="width:40%" id="EventCreation">
-            <form method="post" style="width:auto" action="events.php" class="popup-container">
+    <div class="popup-form"  style="width:40%" id="EventCreation">
+        <form method="post" style="width:auto" action="events.php" class="popup-container">
             <h1>Please enter the event details</h1>
-                <input type="text" placeholder="Event Name" name="event_name" required>
-                <input type="text" placeholder="Enter Location" id="event_address" name="event_address" required>
-                <input type="date" placeholder="Event Date" name="event_date" required>
-                <input type="time" placeholder="Event Time" name="event_time" required>
-                <br></br>
-                <label><b>Event Description</b></label> 
-                <br></br>
-                <textarea name="event_description" cols="40" rows="10" style="width: -webkit-fill-available;"></textarea>
-                <br></br>
-                <button type="submit" name="create_event" class="btn">Create</button>
-                <button type="reset" name="reset" class="btn">Reset</button>
-                <button type="cancel" onclick="closeCreatePopup()" name="cancel"class="btn">Cancel</button>
+            <input type="text" placeholder="Event Name" name="event_name" required>
+            <input type="text" placeholder="Enter Location" id="event_address" name="event_address" required>
+            <input type="date" placeholder="Event Date" name="event_date" required>
+            <input type="time" placeholder="Event Time" name="event_time" required>
+            <br></br>
+            <label><b>Event Description</b></label> 
+            <br></br>
+            <textarea name="event_description" cols="40" rows="10" style="width: -webkit-fill-available;"></textarea>
+            <br></br>
+            <button type="submit" name="create_event" class="btn">Create</button>
+            <button type="reset" name="reset" class="btn">Reset</button>
+            <button type="cancel" onclick="closeCreatePopup()" name="cancel"class="btn">Cancel</button>
         </form>
     </div>
     
@@ -91,7 +93,6 @@
 
         function openRsvpPopup() {
             rsvpPopup.style.display = "block";
-            creationPopup.style.display = "none";
         }
 
         function closeRsvpPopup() {

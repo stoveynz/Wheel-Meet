@@ -63,12 +63,6 @@
         </form>
     </div>
     
-    <!-- Pop up for viewing club members -->
-    <div class="popup-form" style="width:40%" id="ClubMembers">
-        <form method="post" style="width:auto" action="clubs.php" class="popup-container">
-            <button type="cancel" onclick="closeClubMemberPopup()" name="close-list" class="btn">Close</button>
-        </form>
-    </div>
         
     <script>
         var clubCreatePopup = document.getElementById("ClubCreation")
@@ -80,16 +74,6 @@
         function closeClubCreatePopup() {
             clubCreatePopup.style.display = "none";
             window.location.href='clubs.php';
-        }
-        
-        var clubMemberPopup = document.getElementById("ClubMembers");
-        
-        function openClubMemberPopup() {
-            clubMemberPopup.style.display = "block";
-        }
-        
-        function closeClubMemberPopup() {
-            clubMemberPopup.style.display = "none";
         }
     </script>
 </body>
