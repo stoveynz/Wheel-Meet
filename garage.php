@@ -20,7 +20,7 @@
     <div class="main-container">
         
          <h1 class="hero-text"> My Garage</h1>
-       
+        
             <form method="post" action="garage-create.php" class="form-container">
             <button onclick="window.location.href='garage-create.php';" name="create" class="pagebtn"><h2>Add Car</h2></button>
             </form>

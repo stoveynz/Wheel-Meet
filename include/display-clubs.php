@@ -53,10 +53,32 @@
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 echo '<p>'.$row['username'].' </p>';
-                echo '<input type="submit" class="btn" name="kick_member" value="Kick">';
-                echo '<input type="submit" class="btn" name="admin_member" value="Make Admin">';
-                echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
-                echo '<input type="hidden" name="club" value="'.$club.'">';
+                // Check so admin don't see kick option on themselves
+                if($row['id'] != return_user())
+                {
+                    echo '<form action="clubs.php" method="post">';
+                        echo '<input type="submit" class="btn" name="kick_member" value="Kick">';
+                        echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                        echo '<input type="hidden" name="club" value="'.$club.'">';
+                    echo '</form>';
+                }
+                // Only Owner can add/remove admin.
+                if(club_owner($db, return_user(), $club)){
+                    if(check_admin($db, $row['id'],$club)){
+                        echo '<form action="clubs.php" method="post">';
+                            echo '<input type="submit" class="btn" name="admin_remove" value="Remove Admin">';
+                            echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                            echo '<input type="hidden" name="club" value="'.$club.'">';
+                        echo '</form>';
+                    }
+                    else{
+                        echo '<form action="clubs.php" method="post">';
+                            echo '<input type="submit" class="btn" name="admin_member" value="Make Admin">';
+                            echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                            echo '<input type="hidden" name="club" value="'.$club.'">';
+                        echo '</form>';
+                    }
+                }
             }
         }
         else
@@ -77,10 +99,16 @@
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
                     echo '<p>'.$row['username'].' </p>';
-                    echo '<input type="submit" class="btn" name="approve_member" value="Approve">';
-                    echo '<input type="submit" class="btn" name="decline_member" value="Decline">';
-                    echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
-                    echo '<input type="hidden" name="club" value="'.$club.'">';
+                    echo '<form action="clubs.php" method="post">';
+                        echo '<input type="submit" class="btn" name="approve_member" value="Approve">';
+                        echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                        echo '<input type="hidden" name="club" value="'.$club.'">';
+                    echo '</form>';
+                    echo '<form action="clubs.php" method="post">';
+                        echo '<input type="submit" class="btn" name="decline_member" value="Decline">';
+                        echo '<input type="hidden" name="user_request" value="'.$row['id'].'">';
+                        echo '<input type="hidden" name="club" value="'.$club.'">';
+                    echo '</form>';
                 }
             }
             else
@@ -100,7 +128,12 @@
                 }
                     echo '<div class = "card-column">';
                         echo '<div class = "card" name="'.$row['clubid'].'">';
-                        echo '<h3>'.$row['name'].'</h3>';
+                        if(club_owner($db, return_user(), $row['clubid'])){
+                            echo '<h3>'.$row['name'].' [Owner]</h3>';
+                        }
+                        else{
+                            echo '<h3>'.$row['name'].'</h3>';
+                        }
                         if($row["private"] == 0){
                             echo '<p>Privacy: Public</p>';
                         }
@@ -134,6 +167,12 @@
                             }
                             // User already in club
                             else{
+                                if(check_admin($db, $user, $row['clubid']))
+                                {
+                                    echo '<form action="clubs.php" method="get">';
+                                        echo '<input type="button" class="pagebtn" onclick="location.href=\'manage-club.php?club='.$row['clubid'].'\';" name="club_members" value="View Members [ADMIN]">';
+                                    echo '</form>';
+                                }
                                 echo '<form action="clubs.php" method="post">';
                                     echo '<input type="submit" class="pagebtn" name="leave_club" value = "Leave Club">';
                                     echo '<input type="hidden" name = "club" value="'.$row['clubid'].'">';

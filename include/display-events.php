@@ -72,8 +72,10 @@
                                 }
                             }
                             else{
+                                echo '<form action="events.php" method="get">';
+                                    echo '<input type = "button" class="pagebtn" onclick="location.href=\'manage-event.php?event='.$row['event_id'].'\';" value = "View RSVPs">';
+                                echo '</form>';
                                 echo '<form action="events.php" method ="post">';
-                                    echo '<input type = "button" class="pagebtn" onclick="openRsvpPopup()" name = "event_view_rsvp" value = "View RSVPs">';
                                     echo '<input type = "submit" class="pagebtn" name="delete_event" value="Delete Event">';
                                     echo '<input type = "hidden" name = "event" value = "'.$row['event_id'].'">';
                                 echo '</form>';

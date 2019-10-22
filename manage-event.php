@@ -2,7 +2,7 @@
     include('include/wheel-meet.php');
     check_logged_in();
     
-    $club = $_GET['club'];
+    $event = $_GET['event'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,14 +22,13 @@
 <body>
     
     <div class="main-container">
-        <form method="post" action="clubs.php" class="form-container">
-            <h1>Clubs Members</h1>
+        <form method="post" action="events.php" class="form-container">
+            <h1>Event RSVP</h1>
             <?php
-                view_club_members($db, $club);
-                view_request_list($db, $club);
+                view_rsvp($db, $event);
             ?>
             <br>
-            <button type="cancel" onclick="window.location.href='clubs.php';" name="cancel" style="margin-left: 0px;" class="pagebtn">Go Back</button>
+            <button type="cancel" onclick="window.location.href='events.php';" name="cancel" style="margin-left: 0px;" class="pagebtn">Go Back</button>
         </form>
     </div>
     

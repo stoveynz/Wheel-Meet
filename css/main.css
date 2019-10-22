@@ -30,6 +30,12 @@ body {
     clear: both;
 }
 
+.main-container .car-img {
+    width: 100%;
+    padding-top: 25px;
+    padding-right: 25px;
+}
+
 h1.hero-text {
     display: table;
     float: left;

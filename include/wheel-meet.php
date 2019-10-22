@@ -61,6 +61,17 @@ include('add-post.php');
         add_car($db, $user);
     }
     
+    //edit car
+    if(isset($_POST['edit_details'])){
+        edit_details($db);
+    }
+    
+    //delete car
+    if(isset($_POST['delete_car'])){
+        $car = $_POST['car_id'];
+        delete_user_car($db, return_user(),$car);
+    }
+    
     //add post 
     if(isset($_POST['create_post'])){
         $user = $_SESSION['userId'];
@@ -88,6 +99,12 @@ include('add-post.php');
         delete_event($db, $user, $event);
     }
     
+    // Kick user from rsvp
+    if(isset($_POST['kick_rsvp'])){
+        $user = $_POST['user_rsvp'];
+        $event = $_POST['event'];
+        kick_rsvp_user($db, $user, $event);
+    }
     // create club
     if(isset($_POST['create_club'])){
         create_club(return_user(), $db);
@@ -130,6 +147,20 @@ include('add-post.php');
         $club = $_POST['club'];
         $user = $_POST['user_request'];
         kick_from_club($db, $user, $club);
+    }
+    
+    // Make user admin
+    if(isset($_POST['admin_member'])){
+        $club = $_POST['club'];
+        $user = $_POST['user_request'];
+        make_admin($db, $user, $club);
+    }
+    
+    // Remove user admin
+    if(isset($_POST['admin_remove'])){
+        $club = $_POST['club'];
+        $user = $_POST['user_request'];
+        remove_admin($db, $user, $club);
     }
     
     // Leave club

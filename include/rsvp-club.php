@@ -38,6 +38,46 @@ function check_privacy($privacy){
     }
 }
 
+// Return if user is admin or not
+function check_admin($db, $user, $club){
+    $sql = "SELECT * FROM club_user WHERE clubid = '$club' AND userid = '$user' AND admin = 1;";
+    $result = mysqli_query($db, $sql);
+    if($result->num_rows > 0){
+        // True meaning user is admin
+        return true;
+    }
+    else{
+        // False meaning user is not admin
+        return false;
+    }
+}
+
+function club_owner($db, $user, $club){
+    $sql = "SELECT * FROM clubs WHERE clubid = '$club' AND ownerid = '$user';";
+    $result = mysqli_query($db, $sql);
+    if($result->num_rows > 0){
+        // User is club owner
+        return true;
+    }
+    else{
+        // User is not club owner
+        return false;
+    }
+}
+// Make user an admin of that club
+function make_admin($db, $user, $club){
+    $sql = "UPDATE club_user SET admin = 1 WHERE userid = '$user' AND clubid = '$club';";
+    mysqli_query($db, $sql);
+    header("Location: manage-club.php?club=$club");
+}
+
+// Remove user admin
+function remove_admin($db, $user, $club){
+    $sql = "UPDATE club_user SET admin = 0 WHERE userid = '$user' AND clubid = '$club';";
+    mysqli_query($db, $sql);
+    header("Location: manage-club.php?club=$club");
+}
+
 // Delete Club
 function delete_club($db, $user, $club){
     $sql = "DELETE FROM clubs WHERE clubid = '$club' AND ownerid = '$user';";

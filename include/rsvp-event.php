@@ -24,17 +24,29 @@ function remove_rsvp($db, $user, $event){
 }
 
 function view_rsvp($db, $event){
-    $sql = "SELECT u.username FROM users u, rsvp r WHERE r.userid = u.id AND r.eventid = '$event';";
+    $sql = "SELECT u.username, u.id FROM users u, rsvp r WHERE r.userid = u.id AND r.eventid = '$event';";
     $result = mysqli_query($db,$sql);
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             echo '<p>'.$row['username'].'</p>';
+            echo '<form action="events.php" method="post">';
+                echo '<input type="submit" class="btn" name="kick_rsvp" value="Kick">';
+                echo '<input type="hidden" name="user_rsvp" value="'.$row['id'].'">';
+                echo '<input type="hidden" name="event" value="'.$event.'">';
+            echo '</form>';
         }
     }
     else
     {
         echo '<p>No Attendances!</p>';
     }
+}
+
+// Kick rsvp user
+function kick_rsvp_user($db, $user, $event){
+    $sql = "DELETE FROM rsvp WHERE userid = '$user' AND eventid = '$event';";
+    mysqli_query($db, $sql);
+   header("Location: manage-event.php?event=$event");
 }
 
 function delete_event($db, $user, $event){
